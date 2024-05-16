@@ -4,7 +4,7 @@ import bmesh
 
 bl_info = {
     "name": "SK Bone Generator",
-    "blender": (2, 80, 0),
+    "blender": (3, 60, 0),
     "category": "Mesh",
 }
 
@@ -18,6 +18,20 @@ class SkBoneGenOperator(bpy.types.Operator):
         name="BoneName",
         description="ボーンの名前",
         default="SK_bone"
+    )
+
+    vertical: bpy.props.IntProperty(
+        name="Vertical",
+        description="縦辺の数",
+        default=8,
+        min=3
+    )
+
+    horizontal: bpy.props.IntProperty(
+        name="Horizontal",
+        description="横辺の数",
+        default=4,
+        min=2
     )
     
 
