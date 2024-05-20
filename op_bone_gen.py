@@ -76,6 +76,10 @@ class SkBoneGenOperator(bpy.types.Operator):
                 edit_bone.tail = bone_tail
                 edit_bone.align_roll(bone_roll)
 
+        bpy.ops.object.mode_set(mode='OBJECT')
+        bpy.context.view_layer.objects.active = obj
+        bpy.ops.object.mode_set(mode='EDIT')
+
 
 
         return {'FINISHED'}

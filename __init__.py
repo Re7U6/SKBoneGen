@@ -7,7 +7,7 @@ bl_info = {
     "author": "Re7U6",
     "version": (1, 0, 0),
     "blender": (3, 60, 0),
-    "location": "View 3D > Sidebar",
+    "location": "View 3D > Sidebar > Edit Tab / Edit Mode Context Menu",
     "description": "スカートのボーンを生成を楽にするアドオン",
     "support": "COMMUNITY",
     "category": "Mesh"
