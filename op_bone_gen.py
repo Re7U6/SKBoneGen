@@ -1,12 +1,7 @@
 import bpy
 from mathutils import Vector
 import bmesh
-
-bl_info = {
-    "name": "SK Bone Generator",
-    "blender": (3, 60, 0),
-    "category": "Mesh",
-}
+from .panel import VIEW3D_PT_SkBoneGenPanel
 
 class SkBoneGenOperator(bpy.types.Operator):
     bl_idname = "bone.skbonegen"
@@ -90,36 +85,3 @@ class SkBoneGenOperator(bpy.types.Operator):
                 edit_bone.align_roll(bone_roll)
 
         return {'FINISHED'}
-
-class VIEW3D_PT_SkBoneGenPanel(bpy.types.Panel):
-    bl_idname = "VIEW3D_PT_SkBoneGenPanel"
-    bl_label = "SKBoneGen"
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'UI'
-    bl_category = 'Tool'
-
-    def draw(self, context):
-        layout = self.layout
-        scene = context.scene
-        
-        op = layout.operator(SkBoneGenOperator.bl_idname, text="Gen")
-
-
-classes = [
-    SkBoneGenOperator,
-    VIEW3D_PT_SkBoneGenPanel
-]
-    
-def register():
-    for c in classes:
-        bpy.utils.register_class(c)
-    print(f"アドオン『{bl_info['name']}』が有効化されました")
-    
-
-def unregister():
-    for c in classes:
-        bpy.utils.register_class(c)
-    print(f"アドオン『{bl_info['name']}』が無効化されました")
-
-if __name__ == "__main__":
-    register()
