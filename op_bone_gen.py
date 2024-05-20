@@ -1,7 +1,6 @@
 import bpy
 from mathutils import Vector
 import bmesh
-from .panel import VIEW3D_PT_SkBoneGenPanel
 
 class SkBoneGenOperator(bpy.types.Operator):
     bl_idname = "bone.skbonegen"
@@ -15,23 +14,16 @@ class SkBoneGenOperator(bpy.types.Operator):
         default="SK_bone"
     )
 
-    vertical: bpy.props.IntProperty(
-        name="Vertical",
-        description="縦辺の数",
-        default=8,
-        min=3
+    bone_num: bpy.props.IntProperty(
+        name="BoneNum",
+        description="ボーンの番号",
+        default=1,
+        min=0
     )
-
-    horizontal: bpy.props.IntProperty(
-        name="Horizontal",
-        description="横辺の数",
-        default=4,
-        min=2
-    )
-    
 
     def execute(self, context):
         bone_name = self.bone_name
+        bone_num = str(self.bone_num)
 
         obj = bpy.context.object
 
@@ -69,7 +61,7 @@ class SkBoneGenOperator(bpy.types.Operator):
                 bone_head = selected_verts[i]
                 bone_tail = selected_verts[i + 1]
                 bone_roll = selected_normal[i]
-                bpy.ops.armature.bone_primitive_add(name=bone_name +'_1')
+                bpy.ops.armature.bone_primitive_add(name=bone_name + '_' + bone_num + '_1')
                 edit_bone = armature_obj.data.edit_bones[-1]
                 edit_bone.head = bone_head
                 edit_bone.tail = bone_tail
@@ -80,8 +72,10 @@ class SkBoneGenOperator(bpy.types.Operator):
                 vec = selected_verts[i + 1]
                 bpy.ops.armature.extrude_move()
                 edit_bone = armature_obj.data.edit_bones[-1]
-                edit_bone.name = bone_name + '_' + str(i + 1)
+                edit_bone.name = bone_name + '_' + bone_num + '_' + str(i + 1)
                 edit_bone.tail = bone_tail
                 edit_bone.align_roll(bone_roll)
+
+
 
         return {'FINISHED'}

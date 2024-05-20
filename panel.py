@@ -10,6 +10,4 @@ class VIEW3D_PT_SkBoneGenPanel(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        scene = context.scene
-
-        op = layout.operator(SkBoneGenOperator.bl_idname, text="Gen")
+        layout.operator(SkBoneGenOperator.bl_idname, text="Gen")
