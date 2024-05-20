@@ -23,4 +23,4 @@
 ## 不具合等
 こちらのDMまで↓
 
-[twitter](https://twitter.com/CGRe_load)
+X(旧twitter) https://twitter.com/CGRe_load
