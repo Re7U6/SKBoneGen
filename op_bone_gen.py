@@ -61,7 +61,7 @@ class SkBoneGenOperator(bpy.types.Operator):
                 bone_head = selected_verts[i]
                 bone_tail = selected_verts[i + 1]
                 bone_roll = selected_normal[i]
-                bpy.ops.armature.bone_primitive_add(name=bone_name + '_' + bone_num + '_1')
+                bpy.ops.armature.bone_primitive_add(name=bone_name + bone_num + '_1')
                 edit_bone = armature_obj.data.edit_bones[-1]
                 edit_bone.head = bone_head
                 edit_bone.tail = bone_tail
