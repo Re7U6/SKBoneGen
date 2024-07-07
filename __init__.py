@@ -25,8 +25,6 @@ def register():
 
 
 def unregister():
-    for c in classes:
-        bpy.utils.register_class(c)
     print(f"アドオン『{bl_info['name']}』が無効化されました")
 
 if __name__ == "__main__":
